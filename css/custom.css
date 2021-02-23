@@ -1,0 +1,14 @@
+body {
+  background: rgb(236,253,245);
+  background: radial-gradient(circle, rgba(236,253,245,1) 0%, rgba(209,250,229,1) 8%, rgba(110,231,183,1) 100%);
+}
+
+.img-border {
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  -moz-border-radius: .25rem;
+  border-radius: .25rem;
+  height: 145px; 
+  object-fit: cover;
+}
