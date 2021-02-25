@@ -39,17 +39,19 @@ function mostrarAlerta(mensaje) {
     }, 3000);
   }
 }
-function buscarImagenes() {
+async function buscarImagenes() {
   const termino = document.querySelector("#termino").value;
   const key = "20378389-de1b8fa54ef80d48759cd2f47";
   const url = `https://pixabay.com/api/?key=${key}&q=${termino}&per_page=${regPorPag}&page=${paginaActual}`;
 
-  fetch(url)
-    .then(respuesta => respuesta.json())
-    .then(resultado => {
-      totalPag = calcularPag(resultado.totalHits);
-      mostrarImagenes(resultado.hits);
-    });
+  try {
+    const respuesta = await fetch(url);
+    const resultado = await respuesta.json();
+    totalPag = calcularPag(resultado.totalHits);
+    mostrarImagenes(resultado.hits);
+  } catch (error) {
+    console.log("error :>> ", error);
+  }
 }
 //generador q va a regisrtar la cantidada de elemntos de acuero a las pag
 function* crearPaginador(total) {
